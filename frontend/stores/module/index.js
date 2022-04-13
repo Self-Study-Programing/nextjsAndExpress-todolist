@@ -1,6 +1,7 @@
 import { AnyAction, CombinedState, combineReducers } from "redux";
 import { HYDRATE } from "next-redux-wrapper";
 import counter, { ICounterState } from "./counter";
+import login from "./login";
 
 const rootReducer = (state, action) => {
   switch (action.type) {
@@ -9,7 +10,7 @@ const rootReducer = (state, action) => {
       return { ...action.payload };
     default: {
       const combineReducer = combineReducers({
-        counter,
+        login,
       });
       return combineReducer(state, action);
     }
