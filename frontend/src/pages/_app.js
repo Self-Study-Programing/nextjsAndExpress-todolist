@@ -1,6 +1,8 @@
 import "../styles/globals.css";
 import styled from "@emotion/styled";
-import wrapper from "../stores";
+import "antd/dist/antd.css";
+import wrapper from "../stores/configureStore";
+import { ThemeProvider } from "styled-components";
 
 const GlobalContainer = styled.div`
   width: 100%;
@@ -8,12 +10,14 @@ const GlobalContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #fff8f5;
 
   .window {
     width: 600px;
     height: 600px;
     border-radius: 15px;
-    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 3px 4px 8px 2px rgba(0, 0, 0, 0.2);
+    background-color: white;
     overflow: hidden;
   }
 `;
@@ -27,15 +31,5 @@ function MyApp({ Component, pageProps }) {
     </GlobalContainer>
   );
 }
-
-MyApp.getInitialProps = async ({ Component, ctx }) => {
-  let pageProps = {};
-
-  if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx);
-  }
-
-  return { pageProps };
-};
 
 export default wrapper.withRedux(MyApp);
