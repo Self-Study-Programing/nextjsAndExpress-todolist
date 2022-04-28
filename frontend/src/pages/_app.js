@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import "antd/dist/antd.css";
 import wrapper from "../stores/configureStore";
 import { ThemeProvider } from "styled-components";
