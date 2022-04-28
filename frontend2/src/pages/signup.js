@@ -1,8 +1,8 @@
 import React from "react";
-import Signup from "../components/signup/Signup";
+import RegisterContainer from "../container/RegisterContainer";
 
 const signup = () => {
-  return <Signup />;
+  return <RegisterContainer />;
 };
 
 export default signup;
