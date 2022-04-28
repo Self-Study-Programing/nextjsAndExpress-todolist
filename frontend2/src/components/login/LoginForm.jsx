@@ -54,7 +54,7 @@ const LoginForm = () => {
             <h1
               style={{
                 fontSize: "50px",
-                fontWeight: 900,
+                fontWeight: 300,
                 textTransform: "uppercase",
               }}
             >
@@ -67,7 +67,7 @@ const LoginForm = () => {
                 style={{
                   margin: "0 auto",
                   fontSize: "50px",
-                  color: "#6358dc",
+                  color: "#786450",
                   fontWeight: 900,
                   textTransform: "uppercase",
                 }}

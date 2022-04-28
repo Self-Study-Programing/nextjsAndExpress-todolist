@@ -6,6 +6,78 @@ const userState = {
   logOutDone: false,
   logOutError: null,
   me: null,
+  item: [
+    {
+      id: 1,
+      title: "title",
+      description: "description",
+    },
+    {
+      id: 1,
+      title: "title",
+      description: "description",
+    },
+    {
+      id: 1,
+      title: "title",
+      description: "description",
+    },
+    {
+      id: 1,
+      title: "title",
+      description: "description",
+    },
+    {
+      id: 1,
+      title: "title",
+      description: "description",
+    },
+    {
+      id: 1,
+      title: "title",
+      description: "description",
+    },
+    {
+      id: 1,
+      title: "title",
+      description: "description",
+    },
+    {
+      id: 1,
+      title: "title",
+      description: "description",
+    },
+    {
+      id: 1,
+      title: "title",
+      description: "description",
+    },
+    {
+      id: 1,
+      title: "title",
+      description: "description",
+    },
+    {
+      id: 1,
+      title: "title",
+      description: "description",
+    },
+    {
+      id: 1,
+      title: "title",
+      description: "description",
+    },
+    {
+      id: 1,
+      title: "title",
+      description: "description",
+    },
+    {
+      id: 1,
+      title: "title",
+      description: "description",
+    },
+  ],
 };
 
 export const LOG_IN_REQUEST = "LOG_IN_REQUEST";
