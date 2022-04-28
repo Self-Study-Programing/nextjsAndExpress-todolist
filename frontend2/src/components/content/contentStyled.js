@@ -18,6 +18,24 @@ export const ContentContainer = styled.div`
       border-bottom: 1px solid #c6b296;
       box-sizing: border-box;
       position: relative;
+      cursor: pointer;
+      position: relative;
+
+      .throw {
+        position: absolute;
+        bottom: 15px;
+        right: 10px;
+        width: 15px;
+        height: 15px;
+      }
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.1);
+        transition: 0.2s;
+      }
+      .success {
+        text-decoration: line-through;
+      }
 
       h3 {
         /* color: #b56d2f; */

@@ -1,3 +1,5 @@
+import shortId from "shortid";
+
 const userState = {
   logInLoading: false,
   logInDone: false,
@@ -6,78 +8,7 @@ const userState = {
   logOutDone: false,
   logOutError: null,
   me: null,
-  item: [
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-  ],
+  item: [],
 };
 
 export const LOG_IN_REQUEST = "LOG_IN_REQUEST";
@@ -88,15 +19,19 @@ export const LOG_OUT_REQUEST = "LOG_OUT_REQUEST";
 export const LOG_OUT_SUCCESS = "LOG_OUT_SUCCESS";
 export const LOG_OUT_FAILURE = "LOG_OUT_FAILURE";
 
+export const POST_ADD_SUCCESS = "POST_ADD_SUCCESS";
+export const ITEM_SUCCESS_TOGGLE = "ITEM_SUCCESS_TOGGLE";
+export const ITEM_DELETE = "ITEM_DELETE";
+
+const postItem = (data) => ({
+  id: shortId.generate(),
+  title: data.title,
+  description: data.description,
+  success: false,
+});
+
 const reducers = (state = userState, action) => {
   switch (action.type) {
-    case LOG_IN_REQUEST:
-      return {
-        ...state,
-        logInLoading: true,
-        logInError: null,
-        logInDone: false,
-      };
     case LOG_IN_SUCCESS:
       return {
         ...state,
@@ -104,31 +39,22 @@ const reducers = (state = userState, action) => {
         logInDone: true,
         me: { email: action.data.email, username: action.data.username },
       };
-    case LOG_IN_FAILURE:
+    case POST_ADD_SUCCESS:
       return {
         ...state,
-        logInLoading: false,
-        logInError: action.error,
+        item: [...state.item, postItem(action.data)],
       };
-    case LOG_OUT_REQUEST:
+    case ITEM_SUCCESS_TOGGLE:
       return {
         ...state,
-        logOutLoading: true,
-        logOutDone: false,
-        logOutError: null,
+        item: state.item.map(
+          (v) => action.data.id === v.id && { ...v, success: !v.success }
+        ),
       };
-    case LOG_OUT_SUCCESS:
+    case ITEM_DELETE:
       return {
         ...state,
-        logOutLoading: false,
-        logOutDone: true,
-        me: null,
-      };
-    case LOG_OUT_FAILURE:
-      return {
-        ...state,
-        logOutLoading: false,
-        logOutError: action.error,
+        item: state.item.filter((v) => action.data.id !== v.id),
       };
     default:
       return state;
