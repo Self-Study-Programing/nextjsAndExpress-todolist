@@ -5,7 +5,7 @@ export const SignupContainer = styled.div`
   height: 100%;
 
   .signupform {
-    height: 100%;
+    height: 600px;
     width: auto;
     display: flex;
     justify-content: center;

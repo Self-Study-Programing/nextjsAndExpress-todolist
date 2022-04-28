@@ -3,7 +3,17 @@ import Link from "next/link";
 import { SignupContainer } from "./signupStyle";
 import ReactTypingEffect from "react-typing-effect";
 
-const Signup = () => {
+const Signup = ({
+  email,
+  username,
+  password,
+  password2,
+  onChangeEmail,
+  onChangePassword,
+  onChangePassword2,
+  onChangeUsername,
+  onSubmitForm,
+}) => {
   const typing = ["signup", "todolist", "ksh5324"];
   return (
     <>
@@ -51,21 +61,31 @@ const Signup = () => {
         <div className="signupform">
           <label>
             name
-            <input type="text" />
+            <input type="text" value={username} onChange={onChangeUsername} />
           </label>
           <label>
             email
-            <input type="email" />
+            <input type="email" value={email} onChange={onChangeEmail} />
           </label>
           <label>
             password
-            <input type="password" />
+            <input
+              type="password"
+              value={password}
+              onChange={onChangePassword}
+            />
           </label>
           <label>
             check password
-            <input type="password" />
+            <input
+              type="password"
+              value={password2}
+              onChange={onChangePassword2}
+            />
           </label>
-          <button className="signup-button">SignUp</button>
+          <button className="signup-button" onClick={onSubmitForm}>
+            SignUp
+          </button>
           <div className="or-line">
             <div className="line"></div>
             <div className="or">OR</div>
