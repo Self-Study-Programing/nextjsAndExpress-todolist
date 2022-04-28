@@ -1,3 +1,5 @@
+import shortId from "shortid";
+
 const userState = {
   logInLoading: false,
   logInDone: false,
@@ -6,78 +8,7 @@ const userState = {
   logOutDone: false,
   logOutError: null,
   me: null,
-  item: [
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-    {
-      id: 1,
-      title: "title",
-      description: "description",
-    },
-  ],
+  item: [],
 };
 
 export const LOG_IN_REQUEST = "LOG_IN_REQUEST";
@@ -88,15 +19,17 @@ export const LOG_OUT_REQUEST = "LOG_OUT_REQUEST";
 export const LOG_OUT_SUCCESS = "LOG_OUT_SUCCESS";
 export const LOG_OUT_FAILURE = "LOG_OUT_FAILURE";
 
+export const POST_ADD_SUCCESS = "POST_ADD_SUCCESS";
+
+const postItem = (data) => ({
+  id: shortId.generate(),
+  title: data.title,
+  description: data.description,
+  success: false,
+});
+
 const reducers = (state = userState, action) => {
   switch (action.type) {
-    case LOG_IN_REQUEST:
-      return {
-        ...state,
-        logInLoading: true,
-        logInError: null,
-        logInDone: false,
-      };
     case LOG_IN_SUCCESS:
       return {
         ...state,
@@ -104,31 +37,10 @@ const reducers = (state = userState, action) => {
         logInDone: true,
         me: { email: action.data.email, username: action.data.username },
       };
-    case LOG_IN_FAILURE:
+    case POST_ADD_SUCCESS:
       return {
         ...state,
-        logInLoading: false,
-        logInError: action.error,
-      };
-    case LOG_OUT_REQUEST:
-      return {
-        ...state,
-        logOutLoading: true,
-        logOutDone: false,
-        logOutError: null,
-      };
-    case LOG_OUT_SUCCESS:
-      return {
-        ...state,
-        logOutLoading: false,
-        logOutDone: true,
-        me: null,
-      };
-    case LOG_OUT_FAILURE:
-      return {
-        ...state,
-        logOutLoading: false,
-        logOutError: action.error,
+        item: [...state.item, postItem(action.data)],
       };
     default:
       return state;
