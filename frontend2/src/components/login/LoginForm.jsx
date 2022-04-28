@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import Link from "next/link";
 import ReactTypingEffect from "react-typing-effect";
 import {
@@ -8,15 +8,34 @@ import {
   CustomButton2,
   CustomInput,
 } from "./LoginFormStyle";
+import { useDispatch } from "react-redux";
+import { LOG_IN_SUCCESS } from "../../reducers/user";
 
-const LoginForm = ({
-  email,
-  onChangeEmail,
-  password,
-  onChangePassword,
-  onSubmitForm,
-}) => {
+const LoginForm = () => {
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const onChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
+  const onSubmitForm = useCallback(
+    (e) => {
+      e.preventDefault();
+      console.log("로그인: " + email, password);
+      dispatch({
+        type: LOG_IN_SUCCESS,
+        data: { email: email, username: "ksh" },
+      });
+    },
+    [email, password]
+  );
+
   const typing = ["login", "todolist", "ksh5324"];
+
   return (
     <>
       <div
@@ -59,7 +78,7 @@ const LoginForm = ({
           }}
         />
       </div>
-      <FormWrapper onFinish={onSubmitForm}>
+      <FormWrapper>
         <div className="formform">
           <label htmlFor="user-email">이메일</label>
           <br />
@@ -84,13 +103,7 @@ const LoginForm = ({
           />
         </div>
         <ButtonWrapper>
-          <CustomButton
-            htmlType="submit"
-            onClick={onSubmitForm}
-            loading={false}
-          >
-            로그인
-          </CustomButton>
+          <CustomButton onClick={onSubmitForm}>로그인</CustomButton>
           <div className="or-line">
             <div className="line"></div>
             <div className="or">OR</div>

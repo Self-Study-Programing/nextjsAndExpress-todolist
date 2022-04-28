@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Form, Input, Button } from "antd";
 
 export const ButtonWrapper = styled.div`
   margin-top: 10px;
@@ -8,7 +7,7 @@ export const ButtonWrapper = styled.div`
   flex-direction: column;
 `;
 
-export const FormWrapper = styled(Form)`
+export const FormWrapper = styled.div`
   padding: 10px;
   height: 600px;
   display: flex;
@@ -63,14 +62,15 @@ export const FormWrapper = styled(Form)`
   }
 `;
 
-export const CustomInput = styled(Input)`
+export const CustomInput = styled.input`
   height: 40px;
   border: none;
   box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
+  width: 100%;
 `;
 
-export const CustomButton = styled(Button)`
+export const CustomButton = styled.button`
   width: 100%;
   height: 45px;
   box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.3);
@@ -86,7 +86,7 @@ export const CustomButton = styled(Button)`
   }
 `;
 
-export const CustomButton2 = styled(Button)`
+export const CustomButton2 = styled.button`
   width: 100%;
   height: 45px;
   box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.3);
