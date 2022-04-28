@@ -21,6 +21,7 @@ export const LOG_OUT_FAILURE = "LOG_OUT_FAILURE";
 
 export const POST_ADD_SUCCESS = "POST_ADD_SUCCESS";
 export const ITEM_SUCCESS_TOGGLE = "ITEM_SUCCESS_TOGGLE";
+export const ITEM_DELETE = "ITEM_DELETE";
 
 const postItem = (data) => ({
   id: shortId.generate(),
@@ -49,6 +50,11 @@ const reducers = (state = userState, action) => {
         item: state.item.map(
           (v) => action.data.id === v.id && { ...v, success: !v.success }
         ),
+      };
+    case ITEM_DELETE:
+      return {
+        ...state,
+        item: state.item.filter((v) => action.data.id !== v.id),
       };
     default:
       return state;

@@ -19,6 +19,15 @@ export const ContentContainer = styled.div`
       box-sizing: border-box;
       position: relative;
       cursor: pointer;
+      position: relative;
+
+      .throw {
+        position: absolute;
+        bottom: 15px;
+        right: 10px;
+        width: 15px;
+        height: 15px;
+      }
 
       &:hover {
         background: rgba(0, 0, 0, 0.1);
