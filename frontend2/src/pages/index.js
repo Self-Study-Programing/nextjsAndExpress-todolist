@@ -2,6 +2,10 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 import LoginForm from "../components/login/loginForm";
 import { useEffect } from "react";
+import Sider from "../components/sider";
+import Header from "../components/header";
+import Footer from "../components/footer";
+import Content from "../components/content";
 
 const CustomLayout = styled.div`
   width: 100%;
@@ -12,7 +16,7 @@ const CustomLayout = styled.div`
 const CustomSider = styled.div`
   width: 30%;
   height: 100%;
-  background-color: red;
+  z-index: 2;
 `;
 
 const CustomLayoutInLayout = styled.div`
@@ -22,17 +26,15 @@ const CustomLayoutInLayout = styled.div`
 
 const CustomHeader = styled.div`
   height: 15%;
-  background: purple;
 `;
 
 const CustomContent = styled.div`
   height: 70%;
-  background-color: aqua;
 `;
 
 const CustomFooter = styled.div`
   height: 15%;
-  background: blue;
+  background: #623400;
 `;
 
 export default function Home() {
@@ -42,11 +44,19 @@ export default function Home() {
     <>
       {logInDone ? (
         <CustomLayout>
-          <CustomSider>Sider</CustomSider>
+          <CustomSider>
+            <Sider />
+          </CustomSider>
           <CustomLayoutInLayout>
-            <CustomHeader>Header</CustomHeader>
-            <CustomContent>Content</CustomContent>
-            <CustomFooter>Footer</CustomFooter>
+            <CustomHeader>
+              <Header />
+            </CustomHeader>
+            <CustomContent>
+              <Content />
+            </CustomContent>
+            <CustomFooter>
+              <Footer />
+            </CustomFooter>
           </CustomLayoutInLayout>
         </CustomLayout>
       ) : (

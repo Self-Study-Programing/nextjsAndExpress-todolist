@@ -74,14 +74,14 @@ export const CustomButton = styled.button`
   width: 100%;
   height: 45px;
   box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.3);
-  background-color: #6358dc;
+  background-color: #786450;
   margin-top: 10px;
   border: none;
   color: white;
   border-radius: 5px;
   z-index: 3;
   &:hover {
-    background: rgba(109, 98, 230, 1);
+    background: rgba(120, 100, 80, 0.9);
     color: #fff;
   }
 `;
