@@ -47,8 +47,8 @@ const reducers = (state = userState, action) => {
     case ITEM_SUCCESS_TOGGLE:
       return {
         ...state,
-        item: state.item.map(
-          (v) => action.data.id === v.id && { ...v, success: !v.success }
+        item: state.item.map((v) =>
+          action.data.id === v.id ? { ...v, success: !v.success } : v
         ),
       };
     case ITEM_DELETE:
