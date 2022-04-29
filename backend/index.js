@@ -10,10 +10,13 @@ app.use(cors());
 const auth = require("./routes/auth");
 app.use("/auth", auth);
 
+const item = require("./routes/item");
+app.use("/item", item);
+
 app.listen(3080, () => {
-  console.log(chalk.magenta("project") + "todolist");
+  console.log(chalk.magenta("project") + " - todolist");
   console.log(
     chalk.green("ready") +
-      " - started server on 127.0.0.0.1:3080 url: http://localhost:3080"
+      " - started server on 127.0.0.1:3080 url: http://localhost:3080"
   );
 });

@@ -17,7 +17,7 @@ const Item = ({ v }) => {
       type: ITEM_DELETE,
       data: v,
     });
-  }, []);
+  }, [v]);
   return (
     <div className="item" onClick={onClickSuccess}>
       <h3 className={v.success ? "success" : ""}>{v.title}</h3>

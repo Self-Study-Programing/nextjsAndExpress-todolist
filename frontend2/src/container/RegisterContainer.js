@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Signup from "../components/signup/Signup";
+import axios from "axios";
 
 const RegisterContainer = () => {
   const [username, setUsername] = useState("");
@@ -44,6 +45,9 @@ const RegisterContainer = () => {
   const onSubmitForm = useCallback(() => {
     console.log("회원가입:" + email, username, password, checked);
     if (checked && email && username && checked) {
+      axios.get(
+        `http://127.0.0.1:3080/auth/register?email=${email}&username=${username}&password=${password}`
+      );
       console.log("성공");
     }
   }, [email, username, password, checked]);

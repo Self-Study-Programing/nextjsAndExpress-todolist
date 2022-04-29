@@ -26,7 +26,6 @@ const LoginForm = () => {
   const onSubmitForm = useCallback(
     async (e) => {
       e.preventDefault();
-      console.log("로그인: " + email, password);
       try {
         const res = await axios.get(
           `http://127.0.0.1:3080/auth/login?email=${email}&password=${password}`
@@ -34,7 +33,12 @@ const LoginForm = () => {
         console.log(res);
         dispatch({
           type: LOG_IN_SUCCESS,
-          data: { email: email, username: "ksh" },
+          data: {
+            email: res.data[0].email,
+            username: res.data[0].username,
+            description: res.data[0].des,
+            item: res.data[0].item,
+          },
         });
       } catch (e) {
         console.log(e);

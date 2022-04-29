@@ -28,6 +28,7 @@ const postItem = (data) => ({
   title: data.title,
   description: data.description,
   success: false,
+  date: "2022-02-29",
 });
 
 const reducers = (state = userState, action) => {
@@ -37,7 +38,12 @@ const reducers = (state = userState, action) => {
         ...state,
         logInLoading: false,
         logInDone: true,
-        me: { email: action.data.email, username: action.data.username },
+        me: {
+          email: action.data.email,
+          username: action.data.username,
+          description: action.data.description,
+        },
+        item: [...action.data.item],
       };
     case POST_ADD_SUCCESS:
       return {
@@ -47,8 +53,8 @@ const reducers = (state = userState, action) => {
     case ITEM_SUCCESS_TOGGLE:
       return {
         ...state,
-        item: state.item.map(
-          (v) => action.data.id === v.id && { ...v, success: !v.success }
+        item: state.item.map((v) =>
+          action.data.id === v.id ? { ...v, success: !v.success } : v
         ),
       };
     case ITEM_DELETE:
