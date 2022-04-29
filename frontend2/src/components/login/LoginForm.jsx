@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import Link from "next/link";
 import ReactTypingEffect from "react-typing-effect";
+import axios from "axios";
 import {
   FormWrapper,
   ButtonWrapper,
@@ -23,13 +24,21 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
   const onSubmitForm = useCallback(
-    (e) => {
+    async (e) => {
       e.preventDefault();
       console.log("로그인: " + email, password);
-      dispatch({
-        type: LOG_IN_SUCCESS,
-        data: { email: email, username: "ksh" },
-      });
+      try {
+        const res = await axios.get(
+          `http://127.0.0.1:3080/auth/login?email=${email}&password=${password}`
+        );
+        console.log(res);
+        dispatch({
+          type: LOG_IN_SUCCESS,
+          data: { email: email, username: "ksh" },
+        });
+      } catch (e) {
+        console.log(e);
+      }
     },
     [email, password]
   );
