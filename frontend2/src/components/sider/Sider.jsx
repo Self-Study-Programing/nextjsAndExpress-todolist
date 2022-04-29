@@ -1,3 +1,10 @@
+
+import React from "react";
+import profile from "../../assets/images/profile.png";
+import Image from "next/image";
+import { SiderContainer } from "./siderStyle";
+
+const Sider = () => {
 import React, { useCallback, useMemo } from "react";
 import profile from "../../assets/images/profile.png";
 import Image from "next/image";
